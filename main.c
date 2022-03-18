@@ -78,7 +78,6 @@ void encode_decode(char command[],FILE* in_file,FILE* out_file,int k)
         if (strcmp (command, "encode") == 0)
           {
             encode (str, k);
-            printf ("%s\n",str);
           }
         else
           {
