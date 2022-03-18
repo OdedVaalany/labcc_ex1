@@ -37,8 +37,10 @@ int main (int argc, char*argv[])
                 fprintf(stderr, "The given command is invalid.\n");
                 return EXIT_FAILURE;
             }
-            if(strstr(argv[2],".")!=NULL){
-                fprintf(stderr, "The given shift value is invalid\n");
+            char *ptr;
+            int k = strtol(argv[2],&ptr,10);
+            if(strstr(argv[2],".")!=NULL && k!=0){
+                fprintf(stderr, "The given shift value is invalid.\n");
                 return EXIT_FAILURE;
             }
             FILE *in_file;
@@ -55,8 +57,6 @@ int main (int argc, char*argv[])
                 fclose(out_file);
                 return EXIT_FAILURE;
             }
-            char *ptr;
-            int k = strtol(argv[2],&ptr,10);
             encode_decode(argv[1],in_file,out_file,k);
             fclose(in_file);
             fclose(out_file);
