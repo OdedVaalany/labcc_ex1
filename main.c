@@ -12,6 +12,8 @@ void encode_decode(char command[],FILE* in_file,FILE* out_file,int k);
 
 int test_passed();
 
+int valid_shift_value(char *str);
+
 int main (int argc, char*argv[])
 {
     switch (argc) {
@@ -39,7 +41,7 @@ int main (int argc, char*argv[])
             }
             char *ptr;
             int k = strtol(argv[2],&ptr,10);
-            if(strstr(argv[2],".")!=NULL && k!=0){
+            if(valid_shift_value (argv[2]) == 0){
                 fprintf(stderr, "The given shift value is invalid.\n");
                 return EXIT_FAILURE;
             }
@@ -130,4 +132,19 @@ int test_passed()
         return 1;
       }
     return 0;
+}
+
+int valid_shift_value(char *str){
+  int there_is_number = 0;
+  for(int i = 0 ;i< strlen ;(str),i++)
+  {
+    if(str[i] == '.')
+      {
+        return 0;
+      }
+    if(str[i] <= 59 && str[i] >= 48){
+      there_is_number = 1;
+    }
+  }
+  return there_is_number;
 }
