@@ -16,7 +16,8 @@
  * @param x - number to do the modulo
  * @return x%26
  * */
-int mod26(int x){
+int mod26(int x)
+{
     return x>=0? x%AB_COUNT : (AB_COUNT+x%AB_COUNT)%AB_COUNT;
 }
 

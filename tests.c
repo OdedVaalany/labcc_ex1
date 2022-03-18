@@ -21,8 +21,8 @@ int test_encode_cyclic_lower_case_special_char_positive_k ()
 {
   char in[] = "xyz__";
   char out[] = "zab__";
-    encode(in,K_2);
-    return strcmp(in,out) != 0;
+  encode(in,K_2);
+  return strcmp(in,out) != 0;
 }
 
 // See full documentation in header file
