@@ -136,7 +136,7 @@ int test_passed()
 
 int valid_shift_value(char *str){
   int there_is_number = 0;
-  for(int i = 0 ;i< strlen ;(str),i++)
+  for(int i = 0 ;i< strlen(str);i++)
   {
     if(str[i] == '.')
       {
