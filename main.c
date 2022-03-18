@@ -56,7 +56,7 @@ int main (int argc, char*argv[])
                 return EXIT_FAILURE;
             }
             char *ptr;
-            int k = (int) strtol(argv[2],&ptr,32);
+            int k = strtol(argv[2],&ptr,10);
             encode_decode(argv[1],in_file,out_file,k);
             fclose(in_file);
             fclose(out_file);
