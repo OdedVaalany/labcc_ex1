@@ -18,9 +18,9 @@ int main (int argc, char*argv[])
 {
     switch (argc) {
         case 2:
-            if (strcmp(argv[1], "tests") == 0)
+            if (strcmp(argv[1], "test") == 0)
               {
-                if (test_passed ())
+                if (test_passed ()!= 0)
                   {
                     return EXIT_FAILURE;
                   }
