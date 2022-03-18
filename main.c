@@ -8,7 +8,7 @@
 // your code goes here
 #define READ_AT_A_TIME 1
 
-void encode_decode(char[],FILE *in_file,FILE *out_file);
+void encode_decode(char command[],FILE* in_file,FILE* out_file,int k);
 
 int test_passed();
 
@@ -17,12 +17,20 @@ int main (int argc, char*argv[])
     switch (argc) {
         case 2:
             if (strcmp(argv[1], "test") == 0)
-                if (test_passed())
+              {
+                if (test_passed ())
+                  {
                     return EXIT_FAILURE;
+                  }
                 else
+                  {
                     return EXIT_SUCCESS;
+                  }
+              }
             else
-                fprintf(stderr, "Usage: cipher test\n");
+              {
+                fprintf (stderr, "Usage: cipher test\n");
+              }
             break;
         case 5:
             if(strcmp(argv[1],"encode") != 0 & strcmp(argv[1],"decode") != 0){
@@ -61,37 +69,38 @@ int main (int argc, char*argv[])
     return EXIT_SUCCESS;
 }
 
-void encode_decode(char command[],FILE in_file,FILE out_file,int k) {
+void encode_decode(char command[],FILE* in_file,FILE* out_file,int k) {
     char str[READ_AT_A_TIME];
-    while (fgets(str,READ_AT_A_TIME,&in_file)){
+    while (fgets(str,READ_AT_A_TIME,in_file)){
         if (strcmp(command, "encode") == 0)
             encode(str,k);
         else
             decode(str,k);
-        fprintf(&out_file,"%s",str);
+        fprintf(out_file,"%s",str);
     }
 }
 
 int test_passed(){
-    if (test_encode_non_cyclic_lower_case_positive_k() != 0)
+    if (test_encode_non_cyclic_lower_case_positive_k() != 0){
         return 1;
+    }
     if (test_encode_cyclic_lower_case_special_char_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_encode_cyclic_upper_case_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_encode_non_cyclic_lower_case_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_encode_non_cyclic_lower_case_special_char_negative_k() != 0)
-        return 1;
+      { return 1; }
     if (test_decode_non_cyclic_lower_case_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_decode_cyclic_lower_case_special_char_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_decode_cyclic_upper_case_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_decode_non_cyclic_lower_case_positive_k() != 0)
-        return 1;
+      { return 1; }
     if (test_decode_non_cyclic_lower_case_special_char_negative_k() != 0)
-        return 1;
+      { return 1; }
     return 0;
 }
