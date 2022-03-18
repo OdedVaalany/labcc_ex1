@@ -7,7 +7,7 @@
 
 
 // your code goes here
-#define read_at_a_time 1
+#define READ_AT_A_TIME 1
 
 int main (int argc, char*argv[])
 {
@@ -39,19 +39,14 @@ int main (int argc, char*argv[])
             }
             FILE *out_file;
             out_file= fopen(argv[4],'w');
-            if(out_file == NULL){
+            if(out_file == NULL) {
                 fprintf(stderr, "The given file is invalid.\n");
                 fclose(out_file);
                 return EXIT_FAILURE;
             }
-            char read_str[read_at_a_time];
-            while(fgets(read_str,read_at_a_time,in_file)){
-                if(argv[1] == "encode")
-                    encode(read_str,atoi(argv[2]));
-                else
-                    decode(read_str,atoi(argv[2]));
-                fprintf(out_file,"%s",read_str);
-            }
+            char *ptr;
+            int k = (int) strtol(argv[2],&ptr,32);
+            encode_decode(argv[1],in_file,out_file,k);
             fclose(in_file);
             fclose(out_file);
 
@@ -61,6 +56,17 @@ int main (int argc, char*argv[])
             break;
     }
     return EXIT_SUCCESS;
+}
+
+void encode_decode(char command[],FILE in_file,FILE out_file,int k) {
+    char str[READ_AT_A_TIME];
+    while (fgets(str,READ_AT_A_TIME,&in_file)){
+        if (strcmp(command, "encode") == 0)
+            encode(str,k);
+        else
+            decode(str,k);
+        fprintf(&out_file,"%s",str);
+    }
 }
 
 int test_passed(){

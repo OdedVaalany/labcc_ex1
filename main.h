@@ -10,5 +10,7 @@
  */
 int test_passed();
 
+void encode_decode(char[],FILE *in_file,FILE *out_file);
+
 
 #endif //EX1_ODED_VAALANY_MAIN_H
