@@ -18,7 +18,7 @@ int main (int argc, char*argv[])
 {
     switch (argc) {
         case 2:
-            if (strcmp(argv[1], "test") == 0)
+            if (strcmp(argv[1], "tests") == 0)
               {
                 if (test_passed ())
                   {
@@ -46,9 +46,8 @@ int main (int argc, char*argv[])
                 return EXIT_FAILURE;
             }
             FILE *in_file;
-            in_file= fopen(argv[3],"r");
+            in_file = fopen(argv[3],"r");
             if(in_file == NULL){
-                fclose(in_file);
                 fprintf(stderr, "The given file is invalid.\n");
                 return EXIT_FAILURE;
             }
@@ -56,7 +55,7 @@ int main (int argc, char*argv[])
             out_file= fopen(argv[4],"w");
             if(out_file == NULL) {
                 fprintf(stderr, "The given file is invalid.\n");
-                fclose(out_file);
+                fclose (in_file);
                 return EXIT_FAILURE;
             }
             encode_decode(argv[1],in_file,out_file,k);
