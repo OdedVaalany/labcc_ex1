@@ -33,13 +33,13 @@ int main (int argc, char*argv[])
               }
             break;
         case 5:
-            if(strcmp(argv[1],"encode") != 0 & strcmp(argv[1],"decode") != 0){
+            if(strcmp(argv[1],"encode") != 0 && strcmp(argv[1],"decode") != 0){
                 fprintf(stderr, "The given command is invalid.\n");
-                return EXIT_SUCCESS;
+                return EXIT_FAILURE;
             }
             if(strstr(argv[2],".")!=NULL){
                 fprintf(stderr, "The given shift value is invalid\n");
-                return EXIT_SUCCESS;
+                return EXIT_FAILURE;
             }
             FILE *in_file;
             in_file= fopen(argv[3],'r');
@@ -64,6 +64,7 @@ int main (int argc, char*argv[])
             break;
         default:
             fprintf(stderr, "The program receives 1 or 4 arguments only.\n");
+            return EXIT_FAILURE;
             break;
     }
     return EXIT_SUCCESS;

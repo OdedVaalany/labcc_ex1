@@ -19,7 +19,8 @@ int test_encode_non_cyclic_lower_case_positive_k ();
 int test_encode_cyclic_lower_case_special_char_positive_k ();
 
 /**
- * Tests non-cyclic encode with lower case string that include special character and negative k=-1.
+ * Tests non-cyclic encode with lower case string that
+ * include special character and negative k=-1.
  * @return 0 upon success.
  */
 int test_encode_non_cyclic_lower_case_special_char_negative_k ();
