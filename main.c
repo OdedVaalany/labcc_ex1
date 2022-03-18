@@ -1,6 +1,5 @@
 #include "cipher.h"
 #include "tests.h"
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,6 +7,10 @@
 
 // your code goes here
 #define READ_AT_A_TIME 1
+
+void encode_decode(char[],FILE *in_file,FILE *out_file);
+
+int test_passed();
 
 int main (int argc, char*argv[])
 {
