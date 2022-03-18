@@ -30,13 +30,15 @@ int main (int argc, char*argv[])
                 fprintf(stderr, "The given shift value is invalid\n");
                 return EXIT_SUCCESS;
             }
-            FILE* in_file = fopen(argv[3],'a');
+            FILE *in_file;
+            in_file= fopen(argv[3],'r');
             if(in_file == NULL){
                 fclose(in_file);
                 fprintf(stderr, "The given file is invalid.\n");
                 return EXIT_FAILURE;
             }
-            FILE*out_file = fopen(argv[4],'w');
+            FILE *out_file;
+            out_file= fopen(argv[4],'w');
             if(out_file == NULL){
                 fprintf(stderr, "The given file is invalid.\n");
                 fclose(out_file);
