@@ -4,7 +4,7 @@
 #include <stdio.h>
 /// IN THIS FILE, IMPLEMENT EVERY FUNCTION THAT'S DECLARED IN cipher.h.
 
-#define AB_count 26
+#define AB_COUNT 26
 
 /**
  * Calculate the modulo of 26
@@ -12,7 +12,7 @@
  * @return x%26
  * */
 int mod26(int x){
-    return x>=0? x%AB_count : (AB_count+x%AB_count)%AB_count;
+    return x>=0? x%AB_COUNT : (AB_COUNT+x%AB_COUNT)%AB_COUNT;
 }
 
 // See full documentation in header file
