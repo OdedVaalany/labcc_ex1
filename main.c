@@ -6,7 +6,7 @@
 
 
 // your code goes here
-#define READ_AT_A_TIME 1
+#define READ_AT_A_TIME 5
 
 void encode_decode(char command[],FILE* in_file,FILE* out_file,int k);
 
@@ -42,14 +42,14 @@ int main (int argc, char*argv[])
                 return EXIT_FAILURE;
             }
             FILE *in_file;
-            in_file= fopen(argv[3],'r');
+            in_file= fopen(argv[3],"r");
             if(in_file == NULL){
                 fclose(in_file);
                 fprintf(stderr, "The given file is invalid.\n");
                 return EXIT_FAILURE;
             }
             FILE *out_file;
-            out_file= fopen(argv[4],'w');
+            out_file= fopen(argv[4],"w");
             if(out_file == NULL) {
                 fprintf(stderr, "The given file is invalid.\n");
                 fclose(out_file);
@@ -72,12 +72,13 @@ int main (int argc, char*argv[])
 
 void encode_decode(char command[],FILE* in_file,FILE* out_file,int k)
 {
-    char str[READ_AT_A_TIME];
-    while (fgets(str,READ_AT_A_TIME,in_file))
+    char *str[READ_AT_A_TIME];
+    while (fgets(str,READ_AT_A_TIME+1,in_file))
       {
         if (strcmp (command, "encode") == 0)
           {
             encode (str, k);
+            printf ("%s\n",str);
           }
         else
           {

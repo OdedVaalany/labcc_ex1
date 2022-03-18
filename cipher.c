@@ -22,7 +22,7 @@ int mod26(int x)
 }
 
 // See full documentation in header file
-void encode (char s[], int k)
+void encode (char *s, int k)
 {
   for(int i=0;i<strlen(s);i++){
       if(LIT_A<=s[i] && s[i]<=LIT_Z){
@@ -35,7 +35,7 @@ void encode (char s[], int k)
 }
 
 // See full documentation in header file
-void decode (char s[], int k)
+void decode (char *s, int k)
 {
     for(int i=0;i<strlen(s);i++){
         if(LIT_A<=s[i] && s[i]<=LIT_Z){
