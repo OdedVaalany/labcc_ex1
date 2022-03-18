@@ -32,6 +32,7 @@ int main (int argc, char*argv[])
             else
               {
                 fprintf (stderr, "Usage: cipher test\n");
+                return EXIT_FAILURE;
               }
             break;
         case 5:
