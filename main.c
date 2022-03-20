@@ -44,13 +44,13 @@ int main (int argc, char*argv[])
               fprintf (stderr, "The given command is invalid.\n");
               return EXIT_FAILURE;
             }
-        char *ptr;
-        int k = strtol (argv[2], &ptr, 10);
         if (valid_shift_value (argv[2]) == 0)
           {
             fprintf (stderr, "The given shift value is invalid.\n");
             return EXIT_FAILURE;
           }
+        char *ptr;
+        int k = strtol (argv[2], &ptr, 10);
         FILE *in_file;
         in_file = fopen (argv[3], "r");
         if (in_file == NULL)
@@ -143,17 +143,12 @@ int test_passed()
 
 int valid_shift_value(char *str)
 {
-  int there_is_number = 0;
   for (int i = 0; i < strlen (str); i++)
     {
-      if (str[i] == '.')
+      if (str[i] > CHAR9 || str[i] < CHAR0)
         {
           return 0;
         }
-      if (str[i] <= CHAR9 && str[i] >= CHAR0)
-        {
-          there_is_number = 1;
-        }
     }
-  return there_is_number;
+  return 1;
 }
