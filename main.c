@@ -18,62 +18,64 @@ int valid_shift_value(char *str);
 
 int main (int argc, char*argv[])
 {
-    switch (argc) {
+    switch (argc)
+      {
         case 2:
-            if (strcmp(argv[1], "test") == 0)
-              {
-                if (test_passed ()!= 0)
-                  {
-                    return EXIT_FAILURE;
-                  }
-                else
-                  {
-                    return EXIT_SUCCESS;
-                  }
-              }
-            else
-              {
-                fprintf (stderr, "Usage: cipher test\n");
-                return EXIT_FAILURE;
-              }
-            break;
-        case 5:
-            if(strcmp(argv[1],"encode") != 0 && strcmp(argv[1],"decode") != 0)
-              {
-                fprintf (stderr, "The given command is invalid.\n");
-                return EXIT_FAILURE;
-              }
-            char *ptr;
-            int k = strtol(argv[2],&ptr,10);
-            if(valid_shift_value (argv[2]) == 0)
-              {
-                fprintf (stderr, "The given shift value is invalid.\n");
-                return EXIT_FAILURE;
-              }
-            FILE *in_file;
-            in_file = fopen(argv[3],"r");
-            if(in_file == NULL)
-              {
-                fprintf (stderr, "The given file is invalid.\n");
-                return EXIT_FAILURE;
-              }
-            FILE *out_file;
-            out_file= fopen(argv[4],"w");
-            if(out_file == NULL) {
-                fprintf(stderr, "The given file is invalid.\n");
-                fclose (in_file);
-                return EXIT_FAILURE;
+          if (strcmp (argv[1], "test") == 0)
+            {
+              if (test_passed () != 0)
+                {
+                  return EXIT_FAILURE;
+                }
+              else
+                {
+                  return EXIT_SUCCESS;
+                }
             }
-            encode_decode(argv[1],in_file,out_file,k);
-            fclose(in_file);
-            fclose(out_file);
-
-            break;
-        default:
-            fprintf(stderr, "The program receives 1 or 4 arguments only.\n");
+          else
+            {
+              fprintf (stderr, "Usage: cipher test\n");
+              return EXIT_FAILURE;
+            }
+        break;
+        case 5:
+          if (strcmp (argv[1], "encode") != 0 && strcmp (argv[1], "decode") != 0)
+            {
+              fprintf (stderr, "The given command is invalid.\n");
+              return EXIT_FAILURE;
+            }
+        char *ptr;
+        int k = strtol (argv[2], &ptr, 10);
+        if (valid_shift_value (argv[2]) == 0)
+          {
+            fprintf (stderr, "The given shift value is invalid.\n");
             return EXIT_FAILURE;
-            break;
-    }
+          }
+        FILE *in_file;
+        in_file = fopen (argv[3], "r");
+        if (in_file == NULL)
+          {
+            fprintf (stderr, "The given file is invalid.\n");
+            return EXIT_FAILURE;
+          }
+        FILE *out_file;
+        out_file = fopen (argv[4], "w");
+        if (out_file == NULL)
+          {
+            fprintf (stderr, "The given file is invalid.\n");
+            fclose (in_file);
+            return EXIT_FAILURE;
+          }
+        encode_decode (argv[1], in_file, out_file, k);
+        fclose (in_file);
+        fclose (out_file);
+
+        break;
+        default:
+          fprintf (stderr, "The program receives 1 or 4 arguments only.\n");
+        return EXIT_FAILURE;
+        break;
+      }
     return EXIT_SUCCESS;
 }
 
