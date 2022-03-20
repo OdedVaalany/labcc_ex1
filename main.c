@@ -36,22 +36,25 @@ int main (int argc, char*argv[])
               }
             break;
         case 5:
-            if(strcmp(argv[1],"encode") != 0 && strcmp(argv[1],"decode") != 0){
-                fprintf(stderr, "The given command is invalid.\n");
+            if(strcmp(argv[1],"encode") != 0 && strcmp(argv[1],"decode") != 0)
+              {
+                fprintf (stderr, "The given command is invalid.\n");
                 return EXIT_FAILURE;
-            }
+              }
             char *ptr;
             int k = strtol(argv[2],&ptr,10);
-            if(valid_shift_value (argv[2]) == 0){
-                fprintf(stderr, "The given shift value is invalid.\n");
+            if(valid_shift_value (argv[2]) == 0)
+              {
+                fprintf (stderr, "The given shift value is invalid.\n");
                 return EXIT_FAILURE;
-            }
+              }
             FILE *in_file;
             in_file = fopen(argv[3],"r");
-            if(in_file == NULL){
-                fprintf(stderr, "The given file is invalid.\n");
+            if(in_file == NULL)
+              {
+                fprintf (stderr, "The given file is invalid.\n");
                 return EXIT_FAILURE;
-            }
+              }
             FILE *out_file;
             out_file= fopen(argv[4],"w");
             if(out_file == NULL) {
@@ -134,17 +137,19 @@ int test_passed()
     return 0;
 }
 
-int valid_shift_value(char *str){
+int valid_shift_value(char *str)
+{
   int there_is_number = 0;
-  for(int i = 0 ;i< strlen(str);i++)
-  {
-    if(str[i] == '.')
-      {
-        return 0;
-      }
-    if(str[i] <= 59 && str[i] >= 48){
-      there_is_number = 1;
+  for (int i = 0; i < strlen (str); i++)
+    {
+      if (str[i] == '.')
+        {
+          return 0;
+        }
+      if (str[i] <= 59 && str[i] >= 48)
+        {
+          there_is_number = 1;
+        }
     }
-  }
   return there_is_number;
 }

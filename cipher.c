@@ -24,25 +24,32 @@ int mod26(int x)
 // See full documentation in header file
 void encode (char *s, int k)
 {
-  for(int i=0;i<strlen(s);i++){
-      if(LIT_A<=s[i] && s[i]<=LIT_Z){
-          s[i] = mod26(s[i]-LIT_A+k)+LIT_A;;
-      }
-      if(CAP_A<=s[i] && s[i]<=CAP_Z){
-          s[i] = mod26(s[i]-CAP_A+k)+CAP_A;
-      }
-  }
+  for(int i=0;i<strlen(s);i++)
+    {
+      if (LIT_A <= s[i] && s[i] <= LIT_Z)
+        {
+          s[i] = mod26 (s[i] - LIT_A + k) + LIT_A;;
+        }
+      if (CAP_A <= s[i] && s[i] <= CAP_Z)
+        {
+          s[i] = mod26 (s[i] - CAP_A + k) + CAP_A;
+        }
+    }
 }
 
 // See full documentation in header file
 void decode (char *s, int k)
 {
-    for(int i=0;i<strlen(s);i++){
-        if(LIT_A<=s[i] && s[i]<=LIT_Z){
-            s[i] = mod26(s[i]-LIT_A-k)+LIT_A;
-        }
-        if(CAP_A<=s[i] && s[i]<=CAP_Z){
-            s[i] = mod26(s[i]-CAP_A-k)+CAP_A;
-        }
-    }
+    for(int i=0;i<strlen(s);i++)
+      {
+        if (LIT_A <= s[i] && s[i] <= LIT_Z)
+          {
+            s[i] = mod26 (s[i] - LIT_A - k) + LIT_A;
+          }
+        if (CAP_A <= s[i] && s[i] <= CAP_Z)
+          {
+            s[i] = mod26 (s[i] - CAP_A - k) + CAP_A;
+          }
+      }
+
 }
