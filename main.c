@@ -7,6 +7,8 @@
 
 // your code goes here
 #define READ_AT_A_TIME 5
+#define CHAR0 48
+#define CHAR9 59
 
 void encode_decode(char command[],FILE* in_file,FILE* out_file,int k);
 
@@ -146,7 +148,7 @@ int valid_shift_value(char *str)
         {
           return 0;
         }
-      if (str[i] <= 59 && str[i] >= 48)
+      if (str[i] <= CHAR9 && str[i] >= CHAR0)
         {
           there_is_number = 1;
         }
