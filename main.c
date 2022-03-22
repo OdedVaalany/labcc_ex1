@@ -143,7 +143,7 @@ int test_passed()
 
 int valid_shift_value(char *str)
 {
-  for (int i = 0; i < strlen (str); i++)
+  for (size_t i = 0; i < strlen (str); i++)
     {
       if ((str[i] > CHAR9 || str[i] < CHAR0) && str[i]!= '-')
         {
