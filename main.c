@@ -81,7 +81,7 @@ int main (int argc, char*argv[])
 
 void encode_decode(char command[],FILE* in_file,FILE* out_file,int k)
 {
-    char *str[READ_AT_A_TIME];
+    char str[READ_AT_A_TIME];
     while (fgets(str,READ_AT_A_TIME+1,in_file))
       {
         if (strcmp (command, "encode") == 0)
