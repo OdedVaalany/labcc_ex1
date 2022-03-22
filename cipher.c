@@ -38,17 +38,17 @@ void encode (char *s, int k)
 }
 
 // See full documentation in header file
-void decode (char *s, int k)
+void decode (char *s ,int k)
 {
     for(size_t i=0;i<strlen(s);i++)
       {
         if (LIT_A <= s[i] && s[i] <= LIT_Z)
           {
-            s[i] = mod26 (s[i] - LIT_A - k) + LIT_A;
+            *(s+i) = mod26 (s[i] - LIT_A - k) + LIT_A;
           }
         if (CAP_A <= s[i] && s[i] <= CAP_Z)
           {
-            s[i] = mod26 (s[i] - CAP_A - k) + CAP_A;
+            *(s+i) = mod26 (s[i] - CAP_A - k) + CAP_A;
           }
       }
 

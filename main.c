@@ -6,7 +6,7 @@
 
 
 // your code goes here
-#define READ_AT_A_TIME 5
+#define READ_AT_A_TIME 3
 #define CHAR0 48
 #define CHAR9 59
 
@@ -37,7 +37,6 @@ int main (int argc, char*argv[])
               fprintf (stderr, "Usage: cipher test\n");
               return EXIT_FAILURE;
             }
-        break;
         case 5:
           if (strcmp (argv[1], "encode") != 0 && strcmp (argv[1], "decode") != 0)
             {
@@ -74,14 +73,13 @@ int main (int argc, char*argv[])
         default:
           fprintf (stderr, "The program receives 1 or 4 arguments only.\n");
         return EXIT_FAILURE;
-        break;
       }
     return EXIT_SUCCESS;
 }
 
-void encode_decode(char command[],FILE* in_file,FILE* out_file,int k)
+void encode_decode(char *command,FILE* in_file,FILE* out_file,int k)
 {
-    char str[READ_AT_A_TIME];
+    char str[READ_AT_A_TIME+1];
     while (fgets(str,READ_AT_A_TIME+1,in_file))
       {
         if (strcmp (command, "encode") == 0)
